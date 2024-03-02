@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  user
+}
+
+enum Status {
+  OPEN
+  IN_PROGRESS
+  HOLD
+  CLOSE
+}
+
+model Issue {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(255)
+  description String   @db.Text
+  status      Status   @default(OPEN)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tags        String[]
+
+  Owner     Profile? @relation(name: "Owner", fields: [createdBy], references: [id])
+  createdBy String?  @db.Uuid
+
+  Assigned   Profile? @relation(name: "Assigned", fields: [assignedTo], references: [id])
+  assignedTo String?  @db.Uuid
+
+  @@map("issue")
+}
+
+model IssueTags {
+  id      String @id @db.Uuid
+  TagName String @default("")
+
+  @@map("issueTags")
+}
+
+model Profile {
+  id       String @id @db.Uuid
+  email    String @default("")
+  fullname String @default("")
+  role     Role   @default(user)
+
+  Owner    Issue[] @relation("Owner")
+  Assigned Issue[] @relation("Assigned")
+
+  @@map("profile")
+}

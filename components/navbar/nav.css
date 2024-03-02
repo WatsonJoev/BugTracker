@@ -1,0 +1,22 @@
+.d-flex{
+    display: flex;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.TopNavbar{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.navItems{
+    justify-content: flex-start;
+    margin:5px 0px
+}
+
+.navItems li{
+    margin-right: 10px;
+}

@@ -1,0 +1,60 @@
+Mosh Nextjs
+--------------
+Core Feature vs Advance Feature 
+
+
+npm i prisma
+update database parameters
+
+
+Create database model and migrate it.
+
+
+
+Nextjs React UI libraries:
+daisy UI
+radix-ui/themes
+
+Hello and welcome!
+
+Thank you for being so interested in our unpaid internship program. Here are the prerequisites:
+
+1) Proficiency in Reactjs and Nodejs [Must Have].
+2) Strong adaptability and willingness to learn with flexible working hours.
+3) Emphasis on teamwork and readiness to shoulder responsibilities.
+
+The internship aims to facilitate your growth and learning from our seasoned professionals by working on realtime projects.
+
+If you meet these prerequisites, Work on the below project and reach me with updates:
+
+E-commerce Shopping Cart:
+Description: Develop an online store with product listings, shopping cart functionality, and checkout process.
+Key Features:
+	User authentication and profile management
+	Product catalog with images, descriptions, and prices
+	Shopping cart with item addition, removal, and quantity adjustment
+	Secure sandbox payment integration (optional, using Stripe or PayPal)
+	Order management and confirmation
+Technologies: ReactJS (frontend), NodeJS (backend), 
+
+
+Biswal@123
+
+
+
+
+Hello and welcome!
+
+Thank you for being so interested in our unpaid internship program. Here are the prerequisites:
+
+1) Proficiency in *communication [English or Hindi]*.
+2) Strong adaptability and willingness to learn with *flexible working hours*.
+3) Emphasis on *teamwork and readiness* to shoulder responsibilities.
+4) *Leadership* quality
+
+The internship aims to facilitate your growth and learning from our seasoned professionals by working on realtime projects.
+
+If you meet these prerequisites, Work on the below task and reach me with updates:
+
+Task:
+	*Record 1 minute video of talking about yourself and convincing us that your suitable for this role.*
