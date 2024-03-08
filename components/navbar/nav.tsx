@@ -83,11 +83,13 @@ const NavBar = () => {
                         <ModeToggle />
                     </div>
                     <div className="mx-3 self-center">
-                    <Button variant="outline" size="icon">
-                        <Link href="/tags/">
-                        <TiTags className="text-lg" />
-                        </Link>
-                    </Button>
+                        {userLogged &&
+                            <Button variant="outline" size="icon">
+                                <Link href="/tags/">
+                                    <TiTags className="text-lg" />
+                                </Link>
+                            </Button>
+                        }
                     </div>
                     <div className="dropdown d-flex dropdown-bottom dropdown-end self-center hidden md:block">
                         {
