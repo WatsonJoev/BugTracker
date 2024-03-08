@@ -19,7 +19,7 @@ import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { Button } from "@/components/ui/button";
 import MultiSelect from 'react-tailwindcss-select';
-import { ToastAction } from "@/components/ui/toast"
+// import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
 
 const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
@@ -185,6 +185,7 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
                   Tags
                 </label>
                 <MultiSelect
+                  primaryColor="blue"
                   value={formData.tags}
                   onChange={handleMultiSelect}
                   options={tagsList}
