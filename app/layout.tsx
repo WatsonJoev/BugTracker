@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from "@/components/navbar/nav"
 import FootBar from "@/components/footer/foot"
+import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const revalidate = 0;
@@ -40,6 +41,7 @@ export default function RootLayout({
             </div>
             <FootBar />
           </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

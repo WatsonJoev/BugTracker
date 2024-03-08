@@ -22,6 +22,9 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 // CSS
 import "./nav.css"
 
+// Icons
+import { TiTags } from "react-icons/ti";
+
 const navigation = [
     { name: 'Dashboard', href: '/', current: true },
     { name: 'Issues', href: '/issues', current: false },
@@ -76,10 +79,17 @@ const NavBar = () => {
                     </div>
                 }
                 <div className='d-flex self-center'>
-                    <div className="mr-1 self-center">
+                    <div className="self-center">
                         <ModeToggle />
                     </div>
-                    <div className="dropdown d-flex dropdown-bottom dropdown-end ml-3 self-center hidden md:block">
+                    <div className="mx-3 self-center">
+                    <Button variant="outline" size="icon">
+                        <Link href="/tags/">
+                        <TiTags className="text-lg" />
+                        </Link>
+                    </Button>
+                    </div>
+                    <div className="dropdown d-flex dropdown-bottom dropdown-end self-center hidden md:block">
                         {
                             !userLogged ? <Link href="/user/login">
                                 <Button variant="outline" size="icon">

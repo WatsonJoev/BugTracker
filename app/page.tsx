@@ -21,6 +21,8 @@ async function AppPage() {
   let openIssues: number = 0;
   let inProgressIssues: number = 0;
   let closedIssues: number = 0;
+  let openIssuesObject: any;
+  let counts:any = {};
 
   try {
     allIssues = await prisma.issue.count()
@@ -36,6 +38,19 @@ async function AppPage() {
     closedIssues = await prisma.issue.count({
       where: { status: "CLOSE" }
     })
+
+    openIssuesObject = await prisma.issue.findMany({
+      where: { status: "OPEN" }
+    })
+
+    let tags = await prisma.issueTags.findMany()
+
+    tags.forEach(element => {
+      let regex = new RegExp(element.tagName, 'g')
+      const count = (JSON.stringify(openIssuesObject).match(regex) || []).length;
+      counts[element.tagName] = count/2
+    });
+
   } catch (error) {
     console.log(error);
   }
