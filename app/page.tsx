@@ -9,6 +9,7 @@ import { redirect } from "next/navigation";
 // DB
 import prisma from "@/prisma/client";
 import { Button } from '@/components/ui/button';
+import TagsBar from '@/components/charts/bar'
 
 async function AppPage() {
   const supabase = createServerComponentClient({ cookies });
@@ -22,7 +23,7 @@ async function AppPage() {
   let inProgressIssues: number = 0;
   let closedIssues: number = 0;
   let openIssuesObject: any;
-  let counts:any = {};
+  let counts: any = {};
 
   try {
     allIssues = await prisma.issue.count()
@@ -48,7 +49,7 @@ async function AppPage() {
     tags.forEach(element => {
       let regex = new RegExp(element.tagName, 'g')
       const count = (JSON.stringify(openIssuesObject).match(regex) || []).length;
-      counts[element.tagName] = count/2
+      counts[element.tagName] = count / 2
     });
 
   } catch (error) {
@@ -95,6 +96,7 @@ async function AppPage() {
             <div className="stat-desc">{openIssues + inProgressIssues} tasks remaining</div>
           </Link>
         </div>
+        <TagsBar counts={counts}/>
       </div>
     </main>
   )

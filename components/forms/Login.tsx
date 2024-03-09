@@ -13,7 +13,8 @@ export default function Login() {
   const router = useRouter();
   const supabase = createClientComponentClient();
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (e: any) => {
+    e.preventDefault()
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -28,7 +29,7 @@ export default function Login() {
   return (
     <>
       {errorMessage && <p className="bg-red-500 rounded p-4 my-3 font-mono">{errorMessage}</p>}
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={(e) => handleSignIn(e)}>
         <label className="grid text-sm font-normal mb-2">
           Email
           <input
@@ -57,8 +58,7 @@ export default function Login() {
         <div className="w-full d-flex justify-around">
           <Button variant="default"
             className="p-2 font-normal py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={handleSignIn}
+            type="submit"
           >
             Sign in
           </Button>

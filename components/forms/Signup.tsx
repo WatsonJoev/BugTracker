@@ -37,7 +37,8 @@ export default function Signup() {
     const router = useRouter();
     const supabase = createClientComponentClient();
 
-    const handleSignUp = async () => {
+    const handleSignUp = async (e:any) => {
+        e.preventDefault()
         const bodyObject = {
             email: email,
             password: password,
@@ -73,7 +74,7 @@ export default function Signup() {
     return (
         <>
             {errorMessage && <p className="bg-red-400 rounded p-4 my-3 font-mono">{errorMessage}</p>}
-            <form className="flex flex-col gap-4">
+            <form className="flex flex-col gap-4" onSubmit={(e) => handleSignUp(e)}>
                 <label className="grid text-sm font-normal mb-2">
                     Fullname
                     <input
@@ -130,8 +131,7 @@ export default function Signup() {
                 <div className="w-full d-flex justify-around">
                     <Button variant="default"
                         className="p-2 font-normal py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="button"
-                        onClick={handleSignUp}
+                        type="submit"
                     >
                         Sign up
                     </Button>
