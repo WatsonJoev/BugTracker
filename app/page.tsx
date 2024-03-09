@@ -58,13 +58,13 @@ async function AppPage() {
 
   return (
     <main className="mx-auto justify-center d-flex">
-      <div>
+      <div className='w-full md:container'>
         <Link className="d-flex justify-center w-fit mx-auto" href="/issues/new">
           <Button variant={'default'} className="btn btn-wide my-3">
-            Raise a Issue
+            Raise an Issue
           </Button>
         </Link>
-        <div className="stats shadow my-10 py-5 hidden md:flex">
+        <div className="stats shadow my-10 py-5 flex flex-col md:flex-row md:container w-full justify-center">
           <Link href="/issues" className="stat hover:cursor-pointer">
             <div className="stat-figure">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">

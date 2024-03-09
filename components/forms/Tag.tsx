@@ -49,7 +49,7 @@ const TagForm = ({ existingData }: any) => {
 
     return (
         <div className="w-full justify-center flex">
-            <div className="w-2/3">
+            <div className="w-full md:w-2/3">
                 <form onSubmit={onSubmit} className="flex max-w-md items-center space-x-2">
                     <Input type="text" placeholder="Add Tags..." value={tagInput} onChange={(e) => setTagInput(e.target.value)} />
                     <Button type="submit">+</Button>

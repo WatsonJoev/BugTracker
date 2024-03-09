@@ -52,7 +52,7 @@ const NavBar = () => {
 
     return (
         <div>
-            <div className="flex justify-between px-10 py-3 mb-3 border-b">
+            <div className="p-0 flex justify-between md:px-10 md:py-3 mb-3 border-b">
                 <Link href="/" className="icon flex self-center border p-1 rounded">
                     <Image
                         src="/bug.svg"
@@ -60,7 +60,7 @@ const NavBar = () => {
                         height={30}
                         alt="Logo"
                     />
-                    <strong className='font-mono flex self-center ml-1'>
+                    <strong className='hidden font-mono md:flex self-center ml-1 sm:'>
                         Tracker
                     </strong>
                 </Link>
@@ -70,7 +70,7 @@ const NavBar = () => {
                             {navigation.map((link, index) =>
                                 <Link href={link.href} key={index} className={classnames({
                                     'transition-colors d-flex mx-3 justify-center self-center hover:font-semibold rounded w-28': true,
-                                    'border-b-4 border-indigo-500 pt-1 font-semibold': link.href === currentPath || currentPath.includes("/issues") && link.name === "Issues",
+                                    'text-primary border-b-4 border-indigo-500 pt-1 font-semibold': link.href === currentPath || currentPath.includes("/issues") && link.name === "Issues",
                                 })}>
                                     {link.name}
                                 </Link>
@@ -124,14 +124,12 @@ const NavBar = () => {
                 </div>
                 <div className="self-center block md:hidden">
                     <details className="dropdown">
-                        <summary className="m-0 btn">
-                            <GiHamburgerMenu className="text-xl" />
-                        </summary>
+                        <summary className="m-0 p-1.5 h-fit" />
                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 right-0 rounded-box w-52">
                             {navigation.map((link, index) =>
                                 <Link href={link.href} key={index} className={classnames({
                                     'transition-colors d-flex my-3 justify-center self-center hover:text-zinc-800 rounded w-28': true,
-                                    'border-b-4 border-indigo-500 pt-1': link.href === currentPath || currentPath === "/issues/new" && link.name === "Issues",
+                                    'text-zinc-800 border-b-4 border-indigo-500 pt-1': link.href === currentPath || currentPath === "/issues/new" && link.name === "Issues",
                                     'text-zinc-500': link.href != currentPath
                                 })}>
                                     {link.name}

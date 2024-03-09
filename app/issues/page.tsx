@@ -34,7 +34,7 @@ const Issues = async () => {
 
   return (
     <div>
-      <main className="container w-full md:w-2/3">
+      <main className="w-full md:container md:w-2/3">
         <h2 className="leading-6 font-medium border-b text-muted-foreground pb-3 subpixel-antialiased text-xl">Issues</h2>
         <DataTableShadcn data={issueData} />
       </main>

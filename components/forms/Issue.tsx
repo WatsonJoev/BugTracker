@@ -161,7 +161,8 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
     <div>
       <form onSubmit={onSubmit}>
         <div className="space-y-12">
-          <div className="border-b border-gray-900/10 pb-12 mx-auto">
+          <div className="border-b pb-12 mx-auto">
+            <hr className="text-secondary-foreground" />
             <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="col-span-full">
                 <label
