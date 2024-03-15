@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html data-theme="light" lang="en" className={inter.className}>
       <link rel="icon" href="/bug.svg" sizes="any" />
-      <body className='w-full h-full no-scrollbar'>
+      <body className='w-full h-full overflow-scroll'>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -36,7 +36,7 @@ export default function RootLayout({
         >
           <div className={"flex flex-col w-full p-2 md:container mx-auto min-h-screen"}>
             <NavBar />
-            <div className="flex-grow container">
+            <div className="flex container justify-center">
               {children}
             </div>
             <FootBar />

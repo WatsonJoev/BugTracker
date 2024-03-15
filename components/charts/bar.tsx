@@ -45,7 +45,7 @@ export default function TagsBar({ counts }: any) {
         ],
     };
     return (
-        <div className='h-[300px] flex justify-center bg-slate-200 rounded py-2'>
+        <div className='h-auto md:h-[300px] flex justify-center bg-slate-200 rounded py-2'>
             <Bar options={options} data={data} />
         </div>
     )

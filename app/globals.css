@@ -2,17 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-      display: none;
-  }
- /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-}
-}
+.overflow-scroll::-webkit-scrollbar { 
+  display: none; 
+} 
 
 @layer base {
   :root {
@@ -61,7 +53,6 @@
   }
 }
 
-
 @layer base {
   * {
     @apply border-border;
@@ -69,24 +60,5 @@
 
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-/* add the code bellow */
-@layer utilities {
-  @layer responsive {
-
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      /* IE and Edge */
-      scrollbar-width: none;
-      /* Firefox */
-    }
   }
 }

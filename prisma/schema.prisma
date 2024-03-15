@@ -37,8 +37,21 @@ model Profile {
   fullname String  @default("")
   Assigned Issue[] @relation("Assigned")
   Owner    Issue[] @relation("Owner")
+  Owning   Org[]   @relation("Owning")
 
   @@map("profile")
+}
+
+model Org {
+  id        String   @id @db.Uuid
+  name      String   @default("")
+  address   String   @default("")
+  strength  String   @default("")
+  username  String   @default("")
+  org_owner String?  @db.Uuid
+  Owning    Profile? @relation("Owning", fields: [org_owner], references: [id])
+
+  @@map("org")
 }
 
 enum Role {
