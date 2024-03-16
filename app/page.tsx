@@ -47,9 +47,9 @@ async function AppPage() {
     let tags = await prisma.issueTags.findMany()
 
     tags.forEach(element => {
-      let regex = new RegExp(element.tagName, 'g')
+      let regex = new RegExp(`"value":"+${element.tagName}`, 'g')
       const count = (JSON.stringify(openIssuesObject).match(regex) || []).length;
-      counts[element.tagName] = count / 2
+      counts[element.tagName] = count
     });
 
   } catch (error) {
