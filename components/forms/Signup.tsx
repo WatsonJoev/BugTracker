@@ -62,7 +62,7 @@ export default function Signup() {
             if (error) {
                 setErrorMessage(error.message);
             } else {
-                router.refresh();
+                router.push("/org");
             }
         } catch (err) {
             if (err instanceof z.ZodError) {

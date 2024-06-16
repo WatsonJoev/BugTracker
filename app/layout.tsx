@@ -34,9 +34,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className={"flex flex-col w-full p-2 md:container mx-auto min-h-screen"}>
+          <div className={"flex flex-col w-full p-2 md:container mx-auto min-h-screen justify-between"}>
             <NavBar />
-            <div className="flex container justify-center">
+            <div className="flex container justify-center min-h-[68vh]">
               {children}
             </div>
             <FootBar />

@@ -241,7 +241,7 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
               </div>
             </div>
           </div>
-          <div className="mt-6 flex items-center justify-end gap-x-6 mx-auto">
+          <div className="mt-6 flex items-center justify-end gap-x-6 mx-auto sticky">
             <Button type="button" variant="outline" onClick={goBack}>
               Cancel
             </Button>
