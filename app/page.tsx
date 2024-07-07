@@ -57,9 +57,9 @@ async function AppPage() {
   }
 
   return (
-    <main className="mx-auto justify-center d-flex">
+    <main className="mx-auto justify-center flex">
       <div className='w-full md:container'>
-        <Link className="d-flex justify-center w-fit mx-auto" href="/issues/new">
+        <Link className="flex justify-center w-fit mx-auto" href="/issues/new">
           <Button variant={'default'} className="btn btn-wide my-3">
             Raise an Issue
           </Button>

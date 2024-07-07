@@ -9,7 +9,7 @@
 ALTER TABLE "note" DROP CONSTRAINT "note_userId_fkey";
 
 -- AlterTable
-ALTER TABLE "profile" ADD COLUMN     "fullname" VARCHAR(255) NOT NULL DEFAULT '',
+ALTER TABLE "profile" ADD COLUMN     "firstname" VARCHAR(255) NOT NULL DEFAULT '',
 ADD COLUMN     "issueId" INTEGER;
 
 -- DropTable

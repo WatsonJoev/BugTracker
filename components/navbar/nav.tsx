@@ -69,7 +69,7 @@ const NavBar = () => {
                         <div className="flex">
                             {navigation.map((link, index) =>
                                 <Link href={link.href} key={index} className={classnames({
-                                    'transition-colors d-flex mx-3 justify-center self-center hover:font-semibold rounded w-28': true,
+                                    'transition-colors flex mx-3 justify-center self-center hover:font-semibold rounded w-28': true,
                                     'text-primary border-b-4 border-indigo-500 pt-1 font-semibold': link.href === currentPath || currentPath.includes("/issues") && link.name === "Issues",
                                 })}>
                                     {link.name}
@@ -78,7 +78,7 @@ const NavBar = () => {
                         </div>
                     </div>
                 }
-                <div className='d-flex self-center'>
+                <div className='flex self-center'>
                     <div className="self-center">
                         <ModeToggle />
                     </div>
@@ -91,15 +91,9 @@ const NavBar = () => {
                             </Button>
                         }
                     </div>
-                    <div className="dropdown d-flex dropdown-bottom dropdown-end self-center hidden md:block">
+                    <div className="dropdown dropdown-bottom dropdown-end self-center hidden md:block">
                         {
-                            !userLogged ? <Link href="/user/login">
-                                <Button variant="outline" size="icon">
-                                    <PiUserBold className="text-lg" />
-                                </Button>
-                            </Link>
-                                :
-                                <DropdownMenu>
+                            userLogged && <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
                                         <label tabIndex={0}>
                                             <Button variant="outline" size="icon">
@@ -128,7 +122,7 @@ const NavBar = () => {
                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 right-0 rounded-box w-52">
                             {navigation.map((link, index) =>
                                 <Link href={link.href} key={index} className={classnames({
-                                    'transition-colors d-flex my-3 justify-center self-center hover:text-zinc-800 rounded w-28': true,
+                                    'transition-colors flex my-3 justify-center self-center hover:text-zinc-800 rounded w-28': true,
                                     'text-zinc-800 border-b-4 border-indigo-500 pt-1': link.href === currentPath || currentPath === "/issues/new" && link.name === "Issues",
                                     'text-zinc-500': link.href != currentPath
                                 })}>

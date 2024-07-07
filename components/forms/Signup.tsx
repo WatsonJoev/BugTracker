@@ -14,7 +14,7 @@ const SignupSchema = z.object({
         .email("This is not a valid email."),
     password: z.string().min(4),
     confirmPassword: z.string().min(4),
-    fullname: z.string(),
+    firstname: z.string(),
     role: z.string(),
 
 }).superRefine(({ confirmPassword, password }, ctx) => {
@@ -31,19 +31,21 @@ export default function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [cnfpassword, setCnfpassword] = useState("");
-    const [fullname, setFullname] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
     const [role, setRole] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const router = useRouter();
     const supabase = createClientComponentClient();
 
-    const handleSignUp = async (e:any) => {
+    const handleSignUp = async (e: any) => {
         e.preventDefault()
         const bodyObject = {
             email: email,
             password: password,
             confirmPassword: cnfpassword,
-            fullname: fullname,
+            firstname: firstname,
+            lastname: lastname,
             role: role,
         }
         try {
@@ -54,7 +56,8 @@ export default function Signup() {
                 options: {
                     emailRedirectTo: `${location.origin}/auth/callback`,
                     data: {
-                        fullname: fullname,
+                        firstname: firstname,
+                        lastname: lastname,
                         role: role,
                     }
                 },
@@ -75,15 +78,26 @@ export default function Signup() {
         <>
             {errorMessage && <p className="bg-red-400 rounded p-4 my-3 font-mono">{errorMessage}</p>}
             <form className="flex flex-col gap-4" onSubmit={(e) => handleSignUp(e)}>
-                <label className="grid text-sm font-normal mb-2">
-                    Fullname
-                    <input
-                        className="shadow font-normal appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        name="fullname"
-                        onChange={(e) => setFullname(e.target.value)}
-                        value={fullname}
-                    />
-                </label>
+                <div className="block md:flex justify-between">
+                    <label className="grid text-sm font-normal">
+                        Firstname
+                        <input
+                            className="shadow font-normal appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            name="Firstname"
+                            onChange={(e) => setFirstname(e.target.value)}
+                            value={firstname}
+                        />
+                    </label>
+                    <label className="grid text-sm font-normal mt-0 md:mt-0 sm:mt-5">
+                        Lastname
+                        <input
+                            className="shadow font-normal appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            name="Lastname"
+                            onChange={(e) => setLastname(e.target.value)}
+                            value={lastname}
+                        />
+                    </label>
+                </div>
                 <label className="grid text-sm font-normal mb-2">
                     Role
                     <input
@@ -124,11 +138,11 @@ export default function Signup() {
                 </label>
                 <p className="text-sm font-normal mb-2">
                     Already a member? {" "}
-                    <Link href="/user/login" className="font-normal p-0 m-0 w-fit text-sm hover:underline">
+                    <Link href="/user/login" className="font-normal p-0 m-0 w-fit text-sm underline">
                         Login
                     </Link>
                 </p>
-                <div className="w-full d-flex justify-around">
+                <div className="w-full flex justify-around">
                     <Button variant="default"
                         className="p-2 font-normal py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="submit"

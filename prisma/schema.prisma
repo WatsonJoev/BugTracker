@@ -34,7 +34,8 @@ model Profile {
   id       String  @id @db.Uuid
   role     Role    @default(user)
   email    String  @default("")
-  fullname String  @default("")
+  firstname String  @default("")
+  lastname String  @default("")
   orgId    String? @db.Uuid
   OrgID    Org?    @relation("OrgID", fields: [orgId], references: [id])
   Assigned Issue[] @relation("Assigned")

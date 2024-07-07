@@ -22,21 +22,21 @@ async function IssueBoard({ params }: { params: { id: string } }) {
   return (
     <main>
       <div className="max-w-2xl mx-auto shadow overflow-hidden sm:rounded-lg">
-        <h3 className="px-4 py-5 sm:px-6 text-lg leading-6 font-medium capitalize d-flex">
+        <h3 className="px-4 py-5 sm:px-6 text-lg leading-6 font-medium capitalize flex">
           <BsBugFill className="self-center mr-1" />
           {issue.title}
         </h3>
-        <div className="pb-1 sm:px-6 d-flex justify-between">
+        <div className="pb-1 sm:px-6 flex justify-between">
           <div>
-            <p className="max-w-2xl text-sm text-slate-400 d-flex">
-              <FaUserInjured className="self-center mr-2 h-4 w-4" /> {issue.Owner?.fullname}
+            <p className="max-w-2xl text-sm text-slate-400 flex">
+              <FaUserInjured className="self-center mr-2 h-4 w-4" /> {issue.Owner?.firstname}
             </p>
-            <p className="mt-1 max-w-2xl text-sm text-slate-400 d-flex">
+            <p className="mt-1 max-w-2xl text-sm text-slate-400 flex">
               <CiCalendar className="self-center mr-1 h-5 w-5" /> {issue.createdAt.toLocaleString()}
             </p>
           </div>
           <div className="mt-1 max-w-2xl text-sm text-slate-400 self-end">
-            Assigned To: {issue.Assigned ? issue.Assigned.fullname : "None"}
+            Assigned To: {issue.Assigned ? issue.Assigned.firstname : "None"}
           </div>
         </div>
         <div className="border-t border-gray-200 p-3 text-justify">

@@ -44,7 +44,7 @@ const DropDownMenu = ({ userStatus }: any) => {
     }
 
     return (
-        <div className="self-center h-full d-flex">
+        <div className="self-center h-full flex">
             <Select name='assignedTo' onValueChange={handleIssueStatusChange}>
                 <SelectTrigger className="w-full">
                     <SelectValue placeholder={Object(status)[userStatus.getValue("status")]} />

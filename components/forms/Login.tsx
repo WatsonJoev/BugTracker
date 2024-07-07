@@ -51,11 +51,11 @@ export default function Login() {
         </label>
         <p className="text-sm font-normal mb-2">
           New to BugTracker? {" "}
-          <Link href="/user/signup" className="font-normal p-0 m-0 w-fit text-sm hover:underline">
+          <Link href="/user/signup" className="font-normal p-0 m-0 w-fit text-sm underline">
             Signup
           </Link>
         </p>
-        <div className="w-full d-flex justify-around">
+        <div className="w-full flex justify-around">
           <Button variant="default"
             className="p-2 font-normal py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"

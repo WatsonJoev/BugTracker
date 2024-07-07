@@ -13,8 +13,8 @@ async function main() {
         create or replace function public.handle_new_user()
         returns trigger as $$
         begin
-            insert into public.profile (id, email, fullname)
-            values (new.id, new.email, new.raw_user_meta_data->>'fullname');
+            insert into public.profile (id, email, firstname)
+            values (new.id, new.email, new.raw_user_meta_data->>'firstname');
             return new;
         end;
         $$ language plpgsql security definer;

@@ -206,7 +206,7 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
                       <SelectValue
                         placeholder={
                           requestedIssues.Assigned
-                            ? requestedIssues.Assigned.fullname
+                            ? requestedIssues.Assigned.firstname
                             : ""
                         }
                       />
@@ -216,7 +216,7 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
                         <SelectLabel>Assigned to</SelectLabel>
                         {userList?.map((each: any) => (
                           <SelectItem key={each.id} value={each.id}>
-                            {each.fullname}
+                            {each.firstname}
                           </SelectItem>
                         ))}
                       </SelectGroup>
