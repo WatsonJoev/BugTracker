@@ -1,11 +1,20 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { z } from 'zod'
+
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+  } from "@/components/ui/dropdown-menu"
 
 const SignupSchema = z.object({
     email: z
@@ -98,6 +107,13 @@ export default function Signup() {
                         />
                     </label>
                 </div>
+                <label className="grid text-sm font-normal mb-2">
+                    Role or Admin
+                    <select className="text-sm shadow font-normal appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option className="text-sm" value="org">Org Owner</option>
+                        <option className="text-sm" value="pro">Professional</option>
+                    </select>
+                </label>
                 <label className="grid text-sm font-normal mb-2">
                     Role
                     <input
