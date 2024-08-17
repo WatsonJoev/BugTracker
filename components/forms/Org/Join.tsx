@@ -54,7 +54,7 @@ export default function JoinForm() {
     useEffect(() => {
         const getSession = async () => {
           const { data } = await supabase.auth.getUser();
-          setCurrentUser(data.session ? data.session.user : { id: "" });
+          setCurrentUser(data.user ? data.user : { id: "" });
         };
         getSession();
     }, [router, supabase.auth]);
