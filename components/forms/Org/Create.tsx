@@ -66,7 +66,7 @@ export default function CreateJoin() {
 
     useEffect(() => {
         const getSession = async () => {
-          const { data } = await supabase.auth.getSession();
+          const { data } = await supabase.auth.getUser();
           setCurrentUser(data.session ? data.session.user : { id: "" });
         };
         getSession();

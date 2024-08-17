@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react'
 // Dependencies
 import Image from 'next/image'
 import Link from 'next/link'
+import { redirect } from "next/navigation";
 import classnames from 'classnames'
-import { GiHamburgerMenu } from 'react-icons/gi'
 import { PiUserBold } from 'react-icons/pi'
 import { ModeToggle } from "@/components/theme-toogle";
 import {
@@ -26,20 +26,30 @@ import "./nav.css"
 import { TiTags } from "react-icons/ti";
 
 const navigation = [
-    { name: 'Dashboard', href: '/', current: true },
-    { name: 'Issues', href: '/issues', current: false },
+    { name: 'Dashboard', href: '/tracker', current: true },
+    { name: 'Issues', href: '/tracker/issues', current: false },
 ]
 
 const NavBar = () => {
     const currentPath = usePathname();
     const router = useRouter();
     const supabase = createClientComponentClient();
+    if(currentPath !== "/user/login"){
+        checker();
+    }
     const [userLogged, setUserLogged] = useState(false)
+
+    async function checker(){
+        const { data } = await supabase.auth.getUser();
+        if (!data?.user) {
+            router.push(`/user/login?redirect=${currentPath}`);
+        }
+    }
 
     useEffect(() => {
         const getSession = async () => {
-            const { data } = await supabase.auth.getSession();
-            setUserLogged(data.session?.user ? true : false)
+            const { data } = await supabase.auth.getUser();
+            setUserLogged(data?.user ? true : false)
         }
         getSession()
     }, [userLogged, currentPath, router, supabase.auth])
@@ -53,7 +63,7 @@ const NavBar = () => {
     return (
         <div>
             <div className="p-0 flex justify-between md:px-10 md:py-3 mb-3 border-b">
-                <Link href="/" className="icon flex self-center border p-1 rounded">
+                <Link href="/tracker" className="icon flex self-center border p-1 rounded">
                     <Image
                         src="/bug.svg"
                         width={30}
@@ -70,7 +80,7 @@ const NavBar = () => {
                             {navigation.map((link, index) =>
                                 <Link href={link.href} key={index} className={classnames({
                                     'transition-colors flex mx-3 justify-center self-center hover:font-semibold rounded w-28': true,
-                                    'text-primary border-b-4 border-indigo-500 pt-1 font-semibold': link.href === currentPath || currentPath.includes("/issues") && link.name === "Issues",
+                                    'text-primary border-b-4 border-indigo-500 pt-1 font-semibold': link.href === currentPath || currentPath.includes("/tracker/issues") && link.name === "Issues",
                                 })}>
                                     {link.name}
                                 </Link>
@@ -123,7 +133,7 @@ const NavBar = () => {
                             {navigation.map((link, index) =>
                                 <Link href={link.href} key={index} className={classnames({
                                     'transition-colors flex my-3 justify-center self-center hover:text-zinc-800 rounded w-28': true,
-                                    'text-zinc-800 border-b-4 border-indigo-500 pt-1': link.href === currentPath || currentPath === "/issues/new" && link.name === "Issues",
+                                    'text-zinc-800 border-b-4 border-indigo-500 pt-1': link.href === currentPath || currentPath === "/tracker/issues/new" && link.name === "Issues",
                                     'text-zinc-500': link.href != currentPath
                                 })}>
                                     {link.name}

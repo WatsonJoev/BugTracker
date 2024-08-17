@@ -11,13 +11,12 @@ import prisma from "@/prisma/client";
 import { Button } from '@/components/ui/button';
 import TagsBar from '@/components/charts/bar'
 
-async function AppPage() {
+async function TrackerPage() {
   const supabase = createServerComponentClient({ cookies });
   const { data } = await supabase.auth.getUser();
+  console.log(data)
   if (!data?.user) {
     redirect("/user/login");
-  }else{
-    redirect("/tracker");
   }
 
   let allIssues: number = 0;
@@ -100,10 +99,10 @@ async function AppPage() {
             </Link>
           </div>
         </div>
-        <TagsBar counts={counts} />
+        {/* <TagsBar counts={counts} /> */}
       </div>
     </main>
   )
 }
 
-export default AppPage
+export default TrackerPage

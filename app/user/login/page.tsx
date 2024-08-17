@@ -3,11 +3,12 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export default async function LoginPage() {
+export default async function LoginPage({params, searchParams}: any) {
   const supabase = createServerComponentClient({ cookies });
-  const { data } = await supabase.auth.getSession();
-  if (data.session?.user) {
-    redirect("/");
+  const { data } = await supabase.auth.getUser();
+  if (data?.user) {
+    let redirectTo = searchParams?.redirect || "/";
+    redirect( redirectTo);
   }
 
   return (

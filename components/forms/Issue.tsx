@@ -42,7 +42,7 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
 
   useEffect(() => {
     const getSession = async () => {
-      const { data } = await supabase.auth.getSession();
+      const { data } = await supabase.auth.getUser();
       setCurrentUser(data.session ? data.session.user : { id: "" });
     };
     getSession();
@@ -83,6 +83,7 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
           },
         });
       }
+      console.log(response)
       if (response.status === 201) {
         console.log("Response from the server:", response.data);
         toastAlert("Issue created successfully!")
@@ -91,9 +92,11 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
           description: "",
           tags: []
         });
+        router.push(`/tracker/issues/board/${response.data.id}`)
       } else if (response.status === 202) {
         console.log("Response from the server:", response.data);
         toastAlert("Issue updated successfully!")
+        router.push(`/tracker/issues/board/${response.data.id}`)
       } else {
         console.log("Response from the server:", response.data);
       }

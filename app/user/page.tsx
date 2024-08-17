@@ -14,15 +14,15 @@ import prisma from "@/prisma/client";
 async function UserPage() {
   const supabase = createServerComponentClient({ cookies });
 
-  const { data } = await supabase.auth.getSession();
-  if (!data.session?.user) {
+  const { data } = await supabase.auth.getUser();
+  if (!data?.user) {
     redirect("/user/login");
   }
-  const user = data.session?.user.user_metadata;
+  const user = data?.user.user_metadata;
 
   const userProfile = await prisma.profile.findUnique({
     where: {
-      id: data.session?.user.id
+      id: data?.user.id
     }
   })
 
@@ -66,7 +66,7 @@ async function UserPage() {
                 Email adivress
               </div>
               <div className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {data.session?.user.email}
+                {data?.user.email}
               </div>
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

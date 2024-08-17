@@ -104,14 +104,14 @@ export const columns: ColumnDef<IssueTypes>[] = [
         id: "actions",
         enableHiding: false,
         cell: ({ row }) => <div className="capitalize flex justify-end">
-            <Link href={"/issues/update?id=" + row.getValue("id")}>
+            <Link href={"/tracker/issues/update?id=" + row.getValue("id")}>
                 <Button variant="ghost" className="h-8 w-8 p-0">
                     <span className="sr-only">Edit Issue</span>
                     <CiEdit className="h-4 w-4" />
                 </Button>
             </Link>
             {/* <Button variant="ghost" className="h-8 w-8 p-0"
-            onClick={() => axios.put("/issues/board/" + row.getValue("id"), { status: "DELETE" })
+            onClick={() => axios.put("/tracker/issues/board/" + row.getValue("id"), { status: "DELETE" })
                 .then(response => {
                     console.log(response);
                 }).catch(error => {
@@ -121,7 +121,7 @@ export const columns: ColumnDef<IssueTypes>[] = [
                 <span className="sr-only">Delete Issue</span>
                 <CiTrash className="h-4 w-4" />
             </Button> */}
-            <Link href={"/issues/board/" + row.getValue("id")}>
+            <Link href={"/tracker/issues/board/" + row.getValue("id")}>
                 <Button variant="ghost" className="h-8 w-8 p-0">
                     <span className="sr-only">Open Issue</span>
                     <IoOpenOutline className="h-4 w-4" />
