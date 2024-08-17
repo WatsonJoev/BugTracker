@@ -19,6 +19,7 @@ model Issue {
   tags        Json[]   @default([])
   Assigned    Profile? @relation("Assigned", fields: [assignedTo], references: [id])
   Owner       Profile? @relation("Owner", fields: [createdBy], references: [id])
+  org         Org[]    @relation("org")
 
   @@map("issue")
 }
@@ -26,34 +27,37 @@ model Issue {
 model IssueTags {
   id      Int    @id @default(autoincrement())
   tagName String @default("")
+  org     Org[]  @relation("org")
 
   @@map("issueTags")
 }
 
 model Profile {
-  id       String  @id @db.Uuid
-  role     Role    @default(user)
-  email    String  @default("")
+  id        String  @id @db.Uuid
+  role      Role    @default(user)
+  email     String  @default("")
   firstname String  @default("")
-  lastname String  @default("")
-  orgId    String? @db.Uuid
-  OrgID    Org?    @relation("OrgID", fields: [orgId], references: [id])
-  Assigned Issue[] @relation("Assigned")
-  Owner    Issue[] @relation("Owner")
-  Owning   Org[]   @relation("Owning")
+  lastname  String  @default("")
+  orgId     String? @db.Uuid
+  OrgID     Org?    @relation("OrgID", fields: [orgId], references: [id])
+  Assigned  Issue[] @relation("Assigned")
+  Owner     Issue[] @relation("Owner")
+  Owning    Org[]   @relation("Owning")
 
   @@map("profile")
 }
 
 model Org {
-  id        String    @id @default(uuid()) @db.Uuid
-  name      String    @default("")
-  address   String    @default("")
-  strength  String    @default("")
-  username  String    @default("")
-  org_owner String?   @db.Uuid
-  Owning    Profile?  @relation("Owning", fields: [org_owner], references: [id])
-  OrgID     Profile[] @relation("OrgID")
+  id        String      @id @default(uuid()) @db.Uuid
+  name      String      @default("")
+  address   String      @default("")
+  strength  String      @default("")
+  username  String      @default("")
+  org_owner String?     @db.Uuid
+  Owning    Profile?    @relation("Owning", fields: [org_owner], references: [id])
+  OrgID     Profile[]   @relation("OrgID")
+  IssueTags IssueTags[] @relation("org")
+  Issue     Issue[]     @relation("org")
 
   @@map("org")
 }
