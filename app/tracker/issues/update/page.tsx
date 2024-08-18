@@ -37,7 +37,7 @@ const UpdateIssue = async (props: Props) => {
                 id: 'desc',
             }
         })
-        let results = await prisma.issueTags.findMany({
+        let results = await prisma.tags.findMany({
             orderBy: {
                 id: 'desc',
             }
@@ -48,7 +48,7 @@ const UpdateIssue = async (props: Props) => {
     }
 
     return (
-        <div className="container w-full md:w-1/2">
+        <div className="container w-full md:w-3/4">
             <h2 className="text-xl border-b border-gray-900/10 pb-3 font-semibold leading-7 subpixel-antialiased">Update Issue</h2>
             <IssueForm requestedIssues={requestedIssues} userList={userList} tagsList={tagsList} />
         </div>

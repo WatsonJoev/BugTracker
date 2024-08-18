@@ -5,6 +5,7 @@ import BackButton from '@/components/button/BackButton';
 import { FaUserInjured } from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
 import { BsBugFill } from "react-icons/bs";
+import DescriptionBox from '@/components/description/descriptionBox'
 
 // DB
 import prisma from "@/prisma/client";
@@ -20,7 +21,7 @@ async function IssueBoard({ params }: { params: { id: string } }) {
   })
 
   return (
-    <main>
+    <main className='min-w-3/4'>
       <div className="max-w-2xl mx-auto shadow overflow-hidden sm:rounded-lg">
         <h3 className="px-4 py-5 sm:px-6 text-lg leading-6 font-medium capitalize flex">
           <BsBugFill className="self-center mr-1" />
@@ -40,7 +41,7 @@ async function IssueBoard({ params }: { params: { id: string } }) {
           </div>
         </div>
         <div className="border-t border-gray-200 p-3 text-justify">
-          {issue.description}
+          <DescriptionBox description={issue.description}/>
         </div>
         <BackButton />
       </div>

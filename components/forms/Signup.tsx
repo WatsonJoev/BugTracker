@@ -74,7 +74,9 @@ export default function Signup() {
             if (error) {
                 setErrorMessage(error.message);
             } else {
-                router.push("/org");
+                if (typeof window !== "undefined") {
+                    router.push("/org");
+                }
             }
         } catch (err) {
             if (err instanceof z.ZodError) {

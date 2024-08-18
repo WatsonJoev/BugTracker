@@ -35,8 +35,8 @@ const formSchema = z.object({
     name: z.string().min(4, {
         message: "Name should have more than 4 characters",
     }),
-    username: z.string().min(4, {
-        message: "Username is unavailable",
+    username: z.string().min(3, {
+        message: "Username should have more than 4 characters",
     }),
     strength: z.string(),
     Owning: z.object({ connect: z.object({ id: z.string() }) }).optional()

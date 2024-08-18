@@ -26,12 +26,27 @@ const getIDFromParams = (request: NextRequest) => {
 };
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  let body = await request.json();
   const validation = createIssueSchema.safeParse(body);
 
   if (!validation.success) {
     return NextResponse.json(validation.error.errors, { status: 400 });
   }
+
+  let orgID = await prisma.profile.findUniqueOrThrow({
+    where: {
+      id: body.Owner.connect.id
+    }
+  }).then(user => user.orgId)
+  
+  body = {
+    ...body,
+    Org: {
+      connect: {
+        id: orgID
+      }
+    }
+  }  
 
   const newIssue = await prisma.issue.create({
     data: body,

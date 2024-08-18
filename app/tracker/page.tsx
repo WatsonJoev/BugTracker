@@ -14,7 +14,6 @@ import TagsBar from '@/components/charts/bar'
 async function TrackerPage() {
   const supabase = createServerComponentClient({ cookies });
   const { data } = await supabase.auth.getUser();
-  console.log(data)
   if (!data?.user) {
     redirect("/user/login");
   }
@@ -45,7 +44,7 @@ async function TrackerPage() {
       where: { status: "OPEN" }
     })
 
-    let tags = await prisma.issueTags.findMany()
+    let tags = await prisma.tags.findMany()
 
     tags.forEach(element => {
       let regex = new RegExp(`"value":"+${element.tagName}`, 'g')

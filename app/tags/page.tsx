@@ -13,7 +13,7 @@ interface TagsTypes {
 const Tags = async () => {
     let tagsData: TagsTypes[] = [];
     try {
-        tagsData = await prisma.issueTags.findMany()
+        tagsData = await prisma.tags.findMany()
     } catch (error) {
         console.log("error", error)
     }

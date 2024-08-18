@@ -36,7 +36,7 @@ export default function RootLayout({
         >
           <div className={"flex flex-col w-full p-2 md:container mx-auto min-h-screen justify-between"}>
             <NavBar />
-            <div className="flex container justify-center min-h-[68vh]">
+            <div className="flex container justify-center min-h-[65vh]">
               {children}
             </div>
             <FootBar />

@@ -22,7 +22,9 @@ export default function Login() {
     if (error) {
       setErrorMessage(error.message);
     } else {
-      router.refresh();
+      if (typeof window !== "undefined") {
+        router.refresh();
+      }
     }
   };
 

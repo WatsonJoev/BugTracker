@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react'
 // Dependencies
 import Image from 'next/image'
 import Link from 'next/link'
-import { redirect } from "next/navigation";
 import classnames from 'classnames'
 import { PiUserBold } from 'react-icons/pi'
 import { ModeToggle } from "@/components/theme-toogle";
@@ -34,17 +33,7 @@ const NavBar = () => {
     const currentPath = usePathname();
     const router = useRouter();
     const supabase = createClientComponentClient();
-    if(currentPath !== "/user/login"){
-        checker();
-    }
     const [userLogged, setUserLogged] = useState(false)
-
-    async function checker(){
-        const { data } = await supabase.auth.getUser();
-        if (!data?.user) {
-            router.push(`/user/login?redirect=${currentPath}`);
-        }
-    }
 
     useEffect(() => {
         const getSession = async () => {
@@ -52,12 +41,14 @@ const NavBar = () => {
             setUserLogged(data?.user ? true : false)
         }
         getSession()
-    }, [userLogged, currentPath, router, supabase.auth])
+    }, [userLogged, currentPath, supabase.auth])
 
     const handleSignOut = async () => {
         await supabase.auth.signOut();
         setUserLogged(false)
-        router.push("/user/login");
+        if (typeof window !== "undefined") {
+            router.push("/user/login");
+        }
     };
 
     return (

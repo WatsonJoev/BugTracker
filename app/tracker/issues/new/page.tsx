@@ -11,7 +11,7 @@ const CreateIssue = async () => {
     let tagsList: any[] = [];
 
     try {
-        let results = await prisma.issueTags.findMany({
+        let results = await prisma.tags.findMany({
             orderBy: {
                 id: 'desc',
             }
@@ -22,7 +22,7 @@ const CreateIssue = async () => {
     }
     
     return (
-        <div className='w-full md:w-1/2'>
+        <div className='w-full md:w-3/4'>
             <h2 className="text-xl border-b border-gray-900/10 pb-3 font-semibold leading-7 subpixel-antialiased">Create Issue</h2>
             <IssueForm tagsList={tagsList} />
         </div>

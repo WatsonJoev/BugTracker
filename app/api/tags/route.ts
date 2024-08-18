@@ -19,8 +19,8 @@ export async function POST(request: NextRequest) {
     if (!validation.success) {
         return NextResponse.json(validation.error.errors, { status: 400 })
     }
-    console.log(body)
-    const newIssueTags = await prisma.issueTags.create({
+    
+    const newIssueTags = await prisma.tags.create({
         data: body
     })
 
@@ -33,7 +33,7 @@ export async function DELETE(request: NextRequest) {
 
     if (param) {
         try {
-            const deleteIssueTags = await prisma.issueTags.delete({
+            const deleteIssueTags = await prisma.tags.delete({
                 where: {
                     id: param
                 }
@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
 
     let getIssueTagss;
 
-    getIssueTagss = await prisma.issueTags.findMany({
+    getIssueTagss = await prisma.tags.findMany({
         orderBy: {
             id: 'desc',
         }

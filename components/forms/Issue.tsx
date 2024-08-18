@@ -15,12 +15,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import axios from "axios";
-import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { Button } from "@/components/ui/button";
 import MultiSelect from 'react-tailwindcss-select';
 // import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
+import { LuLoader2 } from "react-icons/lu";
+import SimpleMDE from "react-simplemde-editor";
 
 const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
   const router = useRouter();
@@ -39,10 +40,12 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
       }
   );
   const [currentUser, setCurrentUser] = useState({ id: "" });
+  const [loader, setLoader] = useState(false)
 
   useEffect(() => {
     const getSession = async () => {
       const { data } = await supabase.auth.getUser();
+      console.log(data);
       setCurrentUser(data.user ? data.user : { id: "" });
     };
     getSession();
@@ -66,6 +69,7 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault(); // Prevent the page reload
+    setLoader(true)
     try {
       let response;
       if (id) {
@@ -103,6 +107,7 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
     } catch (error) {
       console.error("Error:", error);
     }
+    setLoader(false)
   };
 
   const handleMultiSelect = (value: any) => {
@@ -248,9 +253,18 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
             <Button type="button" variant="outline" onClick={goBack}>
               Cancel
             </Button>
+            {loader ?
+            
+            <Button disabled>
+              <LuLoader2 className="mr-2 h-4 w-4 animate-spin" />
+              Please wait
+            </Button>
+          :
             <Button type="submit" variant="default">
               Submit
             </Button>
+
+            }
           </div>
         </div>
       </form>
