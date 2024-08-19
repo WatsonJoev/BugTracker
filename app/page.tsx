@@ -2,30 +2,38 @@ import React from 'react'
 
 // Dependencies
 import Link from 'next/link'
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-
-// DB
-import prisma from "@/prisma/client";
-import { Button } from '@/components/ui/button';
-import TagsBar from '@/components/charts/bar'
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { MdManageSearch } from "react-icons/md";
+import { TiTags } from "react-icons/ti";
 
 async function AppPage() {
-  const supabase = createServerComponentClient({ cookies });
-  const { data } = await supabase.auth.getUser();
-  if (!data?.user) {
-    redirect("/user/login");
-  } else {
-    redirect("/tracker");
-  }
-  
+
   return (
     <main className="mx-auto justify-center flex">
-      <div className='w-full md:container'>
-        <p className='h-1'>
-          HomePage
-        </p>
+      <div className='w-full md:container flex justify-around'>
+        <Link href={"/tracker"} className='mr-5'>
+          <Card>
+            <CardHeader>
+              <MdManageSearch style={{fontSize: "150px"}} />
+              <CardTitle>Tracker</CardTitle>
+              <CardDescription>Track your records</CardDescription>
+            </CardHeader>
+          </Card>
+        </Link>
+        <Link href={"/tags"} className='ml-5'>
+          <Card>
+            <CardHeader>
+              <TiTags style={{fontSize: "150px"}} />
+              <CardTitle>Tags</CardTitle>
+              <CardDescription>Add Global tags</CardDescription>
+            </CardHeader>
+          </Card>
+        </Link>
       </div>
     </main>
   )

@@ -7,7 +7,9 @@ import prisma from "@/prisma/client";
 
 interface TagsTypes {
     "id": number,
-    "tagName": string,
+    "tagName": string | null,
+    "createdBy": string | null,
+    "Owning_Org": string | null
   }
 
 const Tags = async () => {

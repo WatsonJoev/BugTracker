@@ -7,6 +7,7 @@ import axios from "axios";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { IoTrashOutline } from "react-icons/io5";
+import { FaPlus } from "react-icons/fa";
 
 const TagForm = ({ existingData }: any) => {
     const [tagData, setTagData] = useState(existingData)
@@ -52,16 +53,18 @@ const TagForm = ({ existingData }: any) => {
             <div className="w-full md:w-2/3">
                 <form onSubmit={onSubmit} className="flex max-w-md items-center space-x-2">
                     <Input type="text" placeholder="Add Tags..." value={tagInput} onChange={(e) => setTagInput(e.target.value)} />
-                    <Button type="submit">+</Button>
+                    <Button disabled={tagInput ? false : true} type="submit">
+                        <FaPlus style={{fontSize: "15px"}} />
+                    </Button>
                 </form>
-                <div className="mt-2 rounded-md">
+                <div className="mt-3 rounded-md max-w-md">
                     {tagData.map((each: any) =>
-                        <div key={each.id} className="rounded-md border p-3 flex justify-between align-middle">
+                        <div key={each.id} className="rounded-md border p-2 flex justify-between align-middle">
                             <div className="capitalize">
                                 {each.tagName}
                             </div>
                             <div>
-                                <IoTrashOutline className="cursor-pointer hover:text-lg" onClick={() => onDelete(each.id)} />
+                                <IoTrashOutline style={{fontSize: "20px"}} className="cursor-pointer hover:text-lg" onClick={() => onDelete(each.id)} />
                             </div>
                         </div>
                     )}

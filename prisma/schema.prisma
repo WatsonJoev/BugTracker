@@ -18,18 +18,20 @@ model Issue {
   createdBy   String?  @db.Uuid
   tags        Json[]   @default([])
   Owning_Org  String?  @map("Owning Org") @db.Uuid
+  org         Org?     @relation("org", fields: [Owning_Org], references: [id], onDelete: NoAction, onUpdate: NoAction)
   Assigned    Profile? @relation("Assigned", fields: [assignedTo], references: [id])
   Owner       Profile? @relation("Owner", fields: [createdBy], references: [id])
-  org         Org?     @relation("org", fields: [Owning_Org], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@map("issue")
 }
 
 model Tags {
-  id      Int    @id @default(autoincrement())
-  tagName String @default("")
-  Owning_Org  String?  @map("Owning Org") @db.Uuid
-  org         Org?     @relation("org", fields: [Owning_Org], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id         Int      @id @default(autoincrement())
+  tagName    String   @default("")
+  createdBy  String?  @db.Uuid
+  Owning_Org String?  @db.Uuid
+  org        Org?     @relation("orgTag", fields: [Owning_Org], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Owner      Profile? @relation("OwnerTag", fields: [createdBy], references: [id])
 
   @@map("tags")
 }
@@ -43,6 +45,7 @@ model Profile {
   lastname  String  @default("")
   Assigned  Issue[] @relation("Assigned")
   Owner     Issue[] @relation("Owner")
+  OwnerTag  Tags[]  @relation("OwnerTag")
   Owning    Org[]   @relation("Owning")
   OrgID     Org?    @relation("OrgID", fields: [orgId], references: [id])
 
@@ -50,16 +53,16 @@ model Profile {
 }
 
 model Org {
-  name      String      @default("")
-  strength  String      @default("")
-  username  String      @default("")
-  org_owner String?     @db.Uuid
-  Owning    Profile?    @relation("Owning", fields: [org_owner], references: [id])
-  address   String      @default("")
-  id        String      @id @default(uuid()) @db.Uuid
-  issue     Issue[] @relation("org")
-  OrgID     Profile[]   @relation("OrgID")
-  tags     Tags[] @relation("org")
+  name      String    @default("")
+  strength  String    @default("")
+  username  String    @default("")
+  org_owner String?   @db.Uuid
+  address   String    @default("")
+  id        String    @id @default(uuid()) @db.Uuid
+  OrgID     Profile[] @relation("OrgID")
+  issue     Issue[]   @relation("org")
+  tags      Tags[]    @relation("orgTag")
+  Owning    Profile?  @relation("Owning", fields: [org_owner], references: [id])
 
   @@map("org")
 }
