@@ -5,7 +5,7 @@ import BackButton from '@/components/button/BackButton';
 import { FaUserInjured } from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
 import { BsBugFill } from "react-icons/bs";
-import DescriptionBox from '@/components/description/descriptionBox'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 // DB
 import prisma from "@/prisma/client";
@@ -41,7 +41,7 @@ async function IssueBoard({ params }: { params: { id: string } }) {
           </div>
         </div>
         <div className="border-t border-gray-200 p-3 text-justify">
-          <DescriptionBox description={issue.description}/>
+          <MDXRemote source={issue.description} />
         </div>
         <BackButton />
       </div>

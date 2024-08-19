@@ -74,7 +74,12 @@ const IssueForm = ({ requestedIssues, userList, tagsList }: any) => {
       let response;
       if (id) {
         const urlWithParams = "/api/issues?id=" + id;
-        response = await axios.put(urlWithParams, formData);
+        if(formData.Assigned.connect.id){
+          response = await axios.put(urlWithParams, formData);
+        }else{
+          delete formData.Assigned;
+          response = await axios.put(urlWithParams, formData);
+        }
       } else {
         response = await axios.post("/api/issues", {
           title: formData.title,

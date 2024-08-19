@@ -16,15 +16,17 @@ const CreateIssue = async () => {
                 id: 'desc',
             }
         })
-        results.map(each => tagsList.push({value: each.tagName, label: each.tagName}))
+        results.map(each => tagsList.push({ value: each.tagName, label: each.tagName }))
     } catch (error) {
         console.error('An error occurred:', error);
     }
-    
+
     return (
-        <div className='w-full md:w-3/4'>
-            <h2 className="text-xl border-b border-gray-900/10 pb-3 font-semibold leading-7 subpixel-antialiased">Create Issue</h2>
-            <IssueForm tagsList={tagsList} />
+        <div className="w-full md:container md:w-3/4">
+            <main className="w-full md:container md:w-3/4">
+                <h2 className="leading-6 font-medium border-b text-muted-foreground pb-3 subpixel-antialiased text-xl">Create Issue</h2>
+                <IssueForm tagsList={tagsList} />
+            </main>
         </div>
     )
 }

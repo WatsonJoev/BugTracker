@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
   
   body = {
     ...body,
-    Org: {
+    org: {
       connect: {
         id: orgID
       }

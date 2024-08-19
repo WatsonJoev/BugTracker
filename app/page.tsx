@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext, useEffect, useState } from 'react';
 
 // Dependencies
 import Link from 'next/link'
@@ -11,7 +11,7 @@ import {
 import { MdManageSearch } from "react-icons/md";
 import { TiTags } from "react-icons/ti";
 
-async function AppPage() {
+function AppPage() {
 
   return (
     <main className="mx-auto justify-center flex">
@@ -19,7 +19,7 @@ async function AppPage() {
         <Link href={"/tracker"} className='mr-5'>
           <Card>
             <CardHeader>
-              <MdManageSearch style={{fontSize: "150px"}} />
+              <MdManageSearch style={{ fontSize: "150px" }} />
               <CardTitle>Tracker</CardTitle>
               <CardDescription>Track your records</CardDescription>
             </CardHeader>
@@ -28,7 +28,7 @@ async function AppPage() {
         <Link href={"/tags"} className='ml-5'>
           <Card>
             <CardHeader>
-              <TiTags style={{fontSize: "150px"}} />
+              <TiTags style={{ fontSize: "150px" }} />
               <CardTitle>Tags</CardTitle>
               <CardDescription>Add Global tags</CardDescription>
             </CardHeader>

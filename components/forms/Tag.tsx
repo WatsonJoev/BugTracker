@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 
 // Components
@@ -9,7 +9,8 @@ import { Input } from "@/components/ui/input"
 import { IoTrashOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
 
-const TagForm = ({ existingData }: any) => {
+
+const TagForm = ({ existingData, currentUser }: any) => {
     const [tagData, setTagData] = useState(existingData)
     const [tagInput, setTagInput] = useState("")
 
@@ -19,12 +20,18 @@ const TagForm = ({ existingData }: any) => {
         try {
             setTagData([...tagData, {
                 id: tagData.length + 1,
-                tagName: tagInput
+                tagName: tagInput,
+                createdBy: currentUser
             }])
             let response;
             const urlWithParams = "/api/tags";
             response = await axios.post(urlWithParams, {
-                tagName: tagInput
+                tagName: tagInput,
+                Owner: {
+                    connect:{
+                        id: currentUser
+                    }
+                }
             });
             setTagInput("")
             console.log(response)

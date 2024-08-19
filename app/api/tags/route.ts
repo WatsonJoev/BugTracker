@@ -17,12 +17,29 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validation = createIssueTagsSchema.safeParse(body);
     if (!validation.success) {
-        return NextResponse.json(validation.error.errors, { status: 400 })
+      return NextResponse.json(validation.error.errors, { status: 400 });
     }
-    
+
+    console.log(body)
+
+    let orgID = await prisma.profile
+      .findUniqueOrThrow({
+        where: {
+          id: body.Owner.connect.id,
+        },
+      })
+      .then((user) => user.orgId);
+
     const newIssueTags = await prisma.tags.create({
-        data: body
-    })
+      data: {
+          ...body,
+          org: {
+            connect:{
+                id: orgID
+            }
+          }
+      }
+    });
 
     return NextResponse.json(newIssueTags, { status: 201 })
 
