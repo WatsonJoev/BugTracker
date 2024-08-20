@@ -56,7 +56,7 @@ const TagForm = ({ existingData, currentUser }: any) => {
     }
 
     return (
-        <div className="w-full justify-center flex">
+        <div className="w-full justify-center flex container">
             <div className="w-full md:w-2/3">
                 <form onSubmit={onSubmit} className="flex max-w-md items-center space-x-2">
                     <Input type="text" placeholder="Add Tags..." value={tagInput} onChange={(e) => setTagInput(e.target.value)} />
@@ -66,7 +66,7 @@ const TagForm = ({ existingData, currentUser }: any) => {
                 </form>
                 <div className="mt-3 rounded-md max-w-md">
                     {tagData.map((each: any) =>
-                        <div key={each.id} className="rounded-md border p-2 flex justify-between align-middle">
+                        <div key={each.id} className="rounded-md border p-2 m-2 flex justify-between align-middle">
                             <div className="capitalize">
                                 {each.tagName}
                             </div>

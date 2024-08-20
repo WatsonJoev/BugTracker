@@ -1,14 +1,17 @@
 import React from 'react'
 
 // Dependencies
-import BackButton from '@/components/button/BackButton';
+import {NoStyleBackButton} from '@/components/button/BackButton';
 import { FaUserInjured } from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
 import { BsBugFill } from "react-icons/bs";
+import { MdOutlineEdit } from "react-icons/md";
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
 // DB
 import prisma from "@/prisma/client";
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 async function IssueBoard({ params }: { params: { id: string } }) {
 
@@ -43,7 +46,15 @@ async function IssueBoard({ params }: { params: { id: string } }) {
         <div className="border-t border-gray-200 p-3 text-justify">
           <MDXRemote source={issue.description} />
         </div>
-        <BackButton />
+        <div className='flex mt-5 mx-auto w-full justify-center'>
+          <NoStyleBackButton />
+          <Link href={`/tracker/issues/update?id=${issue.id}`} className='ml-3'>
+            <Button>
+              <MdOutlineEdit className='mr-1'/>
+              Edit
+            </Button>
+          </Link>
+        </div>
       </div>
     </main>
   )

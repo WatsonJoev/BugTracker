@@ -4,7 +4,7 @@ import React from 'react'
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import BackButton from '@/components/button/BackButton';
+import SingleBackButton from '@/components/button/BackButton';
 
 import IconBox from "@/components/icon/Icon"
 
@@ -86,7 +86,7 @@ async function UserPage() {
           </div>
         </div>
       </div>
-      <BackButton />
+      <SingleBackButton />
     </main>
   )
 }

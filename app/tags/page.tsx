@@ -12,7 +12,7 @@ interface TagsTypes {
     "tagName": string | null,
     "createdBy": string | null,
     "Owning_Org": string | null
-  }
+}
 
 const Tags = async () => {
     const supabase = createServerComponentClient({ cookies });
@@ -21,7 +21,7 @@ const Tags = async () => {
     let tagsData: TagsTypes[] = [];
     try {
         tagsData = await prisma.tags.findMany({
-            where:{
+            where: {
                 createdBy: user?.data?.user?.id
             }
         })
@@ -31,9 +31,11 @@ const Tags = async () => {
 
     return (
         <main className="container w-full md:w-2/3">
-            <h2 className="leading-6 font-medium border-b text-muted-foreground pb-3 mb-3 subpixel-antialiased text-xl">Tags</h2>
-            <div className="w-full">
-                <TagForm existingData={tagsData} currentUser={user?.data?.user?.id}/>
+            <div className="container">
+                <h2 className="leading-6 font-medium border-b text-muted-foreground pb-3 mb-3 subpixel-antialiased text-xl">Tags</h2>
+                <div className="w-full">
+                    <TagForm existingData={tagsData} currentUser={user?.data?.user?.id} />
+                </div>
             </div>
         </main>
     )

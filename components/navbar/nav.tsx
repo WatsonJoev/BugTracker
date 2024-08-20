@@ -23,6 +23,7 @@ import "./nav.css"
 
 // Icons
 import { TiTags } from "react-icons/ti";
+import { FaBoxOpen } from "react-icons/fa";
 
 const navigation = [
     { name: 'Dashboard', href: '/tracker', current: true },
@@ -54,19 +55,14 @@ const NavBar = () => {
     return (
         <div>
             <div className="p-0 flex justify-between md:px-10 md:py-3 mb-3 border-b">
-                <Link href="/tracker" className="icon flex self-center border p-1 rounded">
-                    <Image
-                        src="/bug.svg"
-                        width={30}
-                        height={30}
-                        alt="Logo"
-                    />
+                <Link href="/" className="icon flex self-center border p-1 rounded items-center">
                     <strong className='hidden font-mono md:flex self-center ml-1 sm:'>
-                        Tracker
+                        StartupBox
                     </strong>
+                    <FaBoxOpen className='ml-1' style={{fontSize: "20px"}} />
                 </Link>
                 {
-                    userLogged && <div className="notificationIcon self-center hidden md:block">
+                    currentPath === "/tracker" && userLogged && <div className="notificationIcon self-center hidden md:block">
                         <div className="flex">
                             {navigation.map((link, index) =>
                                 <Link href={link.href} key={index} className={classnames({
@@ -80,10 +76,10 @@ const NavBar = () => {
                     </div>
                 }
                 <div className='flex self-center'>
-                    <div className="self-center">
+                    <div className="self-center mr-3">
                         <ModeToggle />
                     </div>
-                    <div className="mx-3 self-center">
+                    {/* <div className="mx-3 self-center">
                         {userLogged &&
                             <Button variant="outline" size="icon">
                                 <Link href="/tags/">
@@ -91,7 +87,7 @@ const NavBar = () => {
                                 </Link>
                             </Button>
                         }
-                    </div>
+                    </div> */}
                     <div className="dropdown dropdown-bottom dropdown-end self-center hidden md:block">
                         {
                             userLogged && <DropdownMenu>
