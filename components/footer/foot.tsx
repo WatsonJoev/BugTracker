@@ -10,7 +10,7 @@ const FootBar = () => {
                 <div className="container justify-center text-center self-center mx-auto px-10 py-5 w-fit">
                     <Link href="/" className="justify-center icon flex self-center border p-1 rounded items-center">
                         {/* <Image
-                            src="/bug.svg"
+                            src="/box.svg"
                             width={30}
                             height={30}
                             alt="Logo"

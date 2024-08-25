@@ -15,8 +15,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Tracker',
-  description: 'Bug Tracker',
+  title: 'StartupBox',
+  description: 'Discover a comprehensive collection of essential tools tailored for new startups, all available for free, to help you launch, grow, and scale your business with ease.',
 }
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html data-theme="light" lang="en" className={inter.className}>
-      <link rel="icon" href="/bug.svg" sizes="any" />
+      <link rel="icon" href="/box.svg" sizes="any" />
       <body>
         <ThemeProvider
           attribute="class"
