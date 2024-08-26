@@ -8,13 +8,16 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { IoTrashOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
+import { toast } from "@/components/ui/use-toast";
 
 
 const TagForm = ({ existingData, currentUser }: any) => {
     const [tagData, setTagData] = useState(existingData)
     const [tagInput, setTagInput] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     const onSubmit = async (e: any) => {
+        setIsLoading(true)
         e.preventDefault(); // Prevent the page reload
 
         try {
@@ -35,8 +38,19 @@ const TagForm = ({ existingData, currentUser }: any) => {
             });
             setTagInput("")
             console.log(response)
+            toast({
+                title: "Success",
+                description: "Tag added successfully",
+            })
         } catch (error) {
-            console.error('Error:', error);
+            console.log('Error:', error);
+            toast({
+                title: "Error",
+                description: "Failed to add tag. Please try again.",
+                variant: "destructive",
+            })
+        } finally {
+            setIsLoading(false)
         }
     };
 
@@ -60,7 +74,7 @@ const TagForm = ({ existingData, currentUser }: any) => {
             <div className="w-full md:w-2/3">
                 <form onSubmit={onSubmit} className="flex max-w-md items-center space-x-2">
                     <Input type="text" placeholder="Add Tags..." value={tagInput} onChange={(e) => setTagInput(e.target.value)} />
-                    <Button disabled={tagInput ? false : true} type="submit">
+                    <Button disabled={tagInput && isLoading!==false ? false : true} type="submit">
                         <FaPlus style={{fontSize: "15px"}} />
                     </Button>
                 </form>

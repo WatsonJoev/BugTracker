@@ -10,6 +10,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
+import Image from "next/image"
 
 export default function Component() {
   return (
@@ -22,7 +23,7 @@ export default function Component() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full border w-8 h-8">
-              <img
+              <Image
                 src="https://github.com/shadcn.png"
                 width="32"
                 height="32"

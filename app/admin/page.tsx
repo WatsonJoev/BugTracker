@@ -11,6 +11,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import Image from "next/image"
 
 export default function Component() {
   return (
@@ -94,7 +95,7 @@ export default function Component() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="rounded-full border w-8 h-8">
-                <img
+                <Image
                   src="https://github.com/shadcn.png"
                   width="32"
                   height="32"
@@ -119,7 +120,7 @@ export default function Component() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <Card>
               <CardHeader>
-                <CardTitle>Today's Attendance</CardTitle>
+                <CardTitle>{"Today's Attendance"}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-4">
                 <div className="flex items-center justify-between">

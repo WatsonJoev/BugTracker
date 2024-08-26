@@ -39,7 +39,7 @@ function AppPage() {
             </CardHeader>
           </Card>
         </Link>
-        <Link href={"/hrm"} className='h-fit'>
+        {/* <Link href={"/admin/AddEmployee"} className='h-fit'>
           <Card>
             <CardHeader>
               <MdPersonAddAlt style={{ fontSize: "150px" }} />
@@ -56,7 +56,7 @@ function AppPage() {
               <CardDescription>Register your entry</CardDescription>
             </CardHeader>
           </Card>
-        </Link>
+        </Link> */}
       </div>
     </main>
   )

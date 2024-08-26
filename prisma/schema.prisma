@@ -52,6 +52,20 @@ model Profile {
   @@map("profile")
 }
 
+model Employee {
+  id         String   @id @default(cuid())
+  name       String
+  email      String   @unique
+  position   String
+  startDate  DateTime
+  department String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([email])
+  @@map("employee")
+}
+
 model Org {
   name      String    @default("")
   strength  String    @default("")

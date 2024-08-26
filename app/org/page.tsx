@@ -8,8 +8,11 @@ import {
 
 import JoinForm from "@/components/forms/Org/Join"
 import CreateJoin from "@/components/forms/Org/Create"
+import { UseUser } from '@/context/AppContext';
 
 export default function OrgSelectionForm() {
+    const { user} = UseUser();
+    console.log(user)
     return (
         <div className="flex flex-col justify-between h-fit self-center md:flex-row">
             <Card className="w-[350px]">

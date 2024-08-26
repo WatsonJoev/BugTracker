@@ -6,6 +6,7 @@ import NavBar from "@/components/navbar/nav"
 import FootBar from "@/components/footer/foot"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider";
+import { UserProvider } from '@/context/AppContext';
 
 export const revalidate = 0;
 
@@ -15,7 +16,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'StartupBox',
+  title: 'Startup Box',
   description: 'Discover a comprehensive collection of essential tools tailored for new startups, all available for free, to help you launch, grow, and scale your business with ease.',
 }
 
@@ -34,17 +35,19 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className={"flex flex-col w-full p-2 md:container mx-auto min-h-screen justify-between"}>
-            <div className='container'>
-              <NavBar />
+          <UserProvider>
+            <div className={"flex flex-col w-full p-2 md:container mx-auto min-h-screen justify-between"}>
+              <div className='container'>
+                <NavBar />
+              </div>
+              <div className="flex container justify-center min-h-[75vh]">
+                {children}
+              </div>
+              <div className='container'>
+                {/* <FootBar /> */}
+              </div>
             </div>
-            <div className="flex container justify-center min-h-[75vh]">
-              {children}
-            </div>
-            <div className='container'>
-              {/* <FootBar /> */}
-            </div>
-          </div>
+          </UserProvider>
           <Toaster />
         </ThemeProvider>
       </body>
