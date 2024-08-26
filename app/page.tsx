@@ -39,7 +39,7 @@ function AppPage() {
             </CardHeader>
           </Card>
         </Link>
-        <Link href={"/tags"} className='h-fit'>
+        <Link href={"/hrm"} className='h-fit'>
           <Card>
             <CardHeader>
               <MdPersonAddAlt style={{ fontSize: "150px" }} />
@@ -48,7 +48,7 @@ function AppPage() {
             </CardHeader>
           </Card>
         </Link>
-        <Link href={"/tags"} className='h-fit'>
+        <Link href={"/attendance"} className='h-fit'>
           <Card>
             <CardHeader>
               <IoMdLogIn style={{ fontSize: "150px" }} />
