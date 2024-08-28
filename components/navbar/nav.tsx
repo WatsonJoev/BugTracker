@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from 'react'
 
 // Dependencies
-import Image from 'next/image'
+import Image from 'next/image';
 import Link from 'next/link'
 import classnames from 'classnames'
 import { PiUserBold } from 'react-icons/pi'
-import { ModeToggle } from "@/components/theme-toogle";
+import { ModeToggle } from "@/components/context/theme-toogle";
 import {
     DropdownMenu,
     DropdownMenuContent,

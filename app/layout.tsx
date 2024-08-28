@@ -5,8 +5,8 @@ import { Inter } from 'next/font/google'
 import NavBar from "@/components/navbar/nav"
 import FootBar from "@/components/footer/foot"
 import { Toaster } from "@/components/ui/toaster"
-import { ThemeProvider } from "@/components/theme-provider";
-import { UserProvider } from '@/context/AppContext';
+import { ThemeProvider } from "@/components/context/theme-provider";
+import { UserProvider } from '@/components/context/user-provider';
 
 export const revalidate = 0;
 
